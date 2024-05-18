@@ -1,0 +1,22 @@
+# block containers
+x-axis	: inline
+y-axis	: box
+
+# flex containers
+x-axis	: main
+y-axis	: cross
+
+# grid containers
+x-axis	: inline/row
+y-axis	: box/column
+
+
+# Box alignment properties
+justify-content	:	Box-containers, Grid-containers, Flex-containers
+align-content		: Box-containers, Grid-containers, Flex-containers
+
+justify-items		: Box-containers, Grid-containers
+align-items			: Grid-containers, Flex-containers
+
+justify-self		: Absolutely-positioned boxes, Block-level boxes, Grid-items
+align-self			: Absolutely-positioned boxes, Grid-items, Flex items

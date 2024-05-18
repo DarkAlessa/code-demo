@@ -1,0 +1,40 @@
+Body-definition + Shape = body
+//-------------------------------
+b2BodyDef def;
+def.positions.Set(0, 25.0);
+def.type = b2_dynamicBody;
+b2Body* body;
+body = world->CreateBody(&def);
+
+b2PolygonShape rect;
+rect.SetAsBox(1.0, 1.0);
+
+body->CreateFixture(&rect, 1.0);
+//-------------------------------
+
+//-- กำหนด Fixture
+b2BodyDef bodyDef;
+bodyDef.type = b2_dynamicBody;
+bodyDef.position.Set(400.0f, 20.0f);
+b2Body* body = world.CreateBody(&bodyDef);
+
+b2PolygonShape dynamicBox;
+dynamicBox.SetAsBox(20.0f, 20.0f);
+
+b2FixtureDef fixtureDef;
+fixtureDef.shape = &dynamicBox;
+fixtureDef.restitution = 0.5f;
+fixtureDef.density = 1.0f;
+fixtureDef.friction = 0.5f;
+
+body->CreateFixture(&fixtureDef);
+//--------------------------------
+
+//--- Simulation
+float timeStep = 1.0f / 60.0f;
+int32 velocityIterations = 6;
+int32 positionIterations = 2;
+world.Step(timeStep, velocityIterations, positionIterations);
+b2Vec2 position = body->GetPosition();
+float angle = body->GetAngle();
+printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);

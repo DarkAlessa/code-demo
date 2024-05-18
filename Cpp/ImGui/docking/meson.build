@@ -1,0 +1,47 @@
+project('docking', 'c', 'cpp',
+    default_options: 'cpp_std=c++23'
+)
+
+sdl2_dep       = dependency('sdl2')
+sdl2_image_dep = dependency('sdl2_image')
+sdl2_ttf_dep   = dependency('sdl2_ttf')
+
+incdir = include_directories(
+    'include',
+    '../imgui',
+    '../imgui/backends',
+)
+
+imgui_src = [
+    '../imgui/imgui.cpp',
+    '../imgui/imgui_demo.cpp',
+    '../imgui/imgui_draw.cpp',
+    '../imgui/imgui_tables.cpp',
+    '../imgui/imgui_widgets.cpp',
+    '../imgui/backends/imgui_impl_sdl2.cpp',
+    '../imgui/backends/imgui_impl_sdlrenderer2.cpp',
+]
+
+src = [
+    'src/docking.cpp',
+    'src/my_win.cpp',
+]
+
+c_compiler    = meson.get_compiler('c')
+cpp_compiler  = meson.get_compiler('cpp')
+warning_flags = ['-Wall', '-Werror', '-Wpedantic']
+warning_flags = cpp_compiler.get_supported_arguments(warning_flags)
+add_project_arguments(warning_flags, language: 'cpp')
+
+executable(
+    'docking',
+    src,
+    imgui_src,
+    include_directories: incdir,
+    win_subsystem: 'windows',
+    dependencies: [
+        sdl2_dep,
+        sdl2_image_dep,
+        sdl2_ttf_dep,
+    ]
+)

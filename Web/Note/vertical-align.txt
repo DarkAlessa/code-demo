@@ -1,0 +1,16 @@
+// Inline-level elements vs Block-level elements
+
+<div>
+	<span>Inline-level element</span>
+	<p>Block-level element</p>
+</div>
+
+<div> เป็น Block-level element 
+<span> เป็น Inline-level element
+<p> เป็น Block-level element 
+
+// การเปลี่ยน element levels
+ใช้ CSS display: property.
+
+// vertical-align
+ ใช้ได้กับ inline, inline-block และ table-cell elements ใช้ไม่ได้กับ block-level elements.

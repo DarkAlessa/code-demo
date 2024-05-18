@@ -1,0 +1,3 @@
+// rgba syntax
+rgba(r, g, b, alpha)
+rgba(r g b / alpha)

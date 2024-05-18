@@ -1,0 +1,43 @@
+html * {
+	margin: 0;
+	border: 0;
+	font-family: Poppins;
+}
+
+body {
+	background-color: #1c1c1c;
+}
+
+.label {
+	font-size: 40px;
+	font-family: Poppins;
+	text-anchor: middle;
+}
+
+.progress_ring {
+	width: 400px;
+	height: 400px;
+	display: block;
+	margin: 0 auto;
+}
+
+.ring {
+	stroke-width: 20px;
+	fill: transparent;
+}
+
+.ring_inner {
+	stroke: #404040;
+}
+
+.ring_outer, .ring_blur {
+	stroke-linecap: round;
+	stroke: url(#circle_outer_grad);
+	transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+	transition: 0.2s stroke-dashoffset;
+}
+
+.ring_blur {
+	filter:  blur(5px);
+}

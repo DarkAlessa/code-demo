@@ -1,0 +1,13 @@
+<svg width="number" height="number" viewBox="mix-x min-y width height">
+...
+...
+</svg>
+
+// viewBox
+ถ้า width, height ของ viewBox น้อยกว่า width="number" height="number" ภาพจะขยาย
+ถ้า width height ของ viewBox มากกว่า width="number" height="number" ภาพจะเล็กลง
+min-x min-y เป็นการเลื่อนภาพไปตามแกน x, y
+
+** Attribute บางอย่างของ elements ใน svg ไม่สามารถกำหนดใน .css file หรือ <style>..</style> ได้ เช่น
+<circle cx="50%" cy="50%" r="50" />
+cx, cy, r ไม่สามารถใช้ใน .css file หรือ <style>..</style> ได้

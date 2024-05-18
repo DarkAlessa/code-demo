@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: azure;
+}
+ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: azure;
+}
+li {
+  text-align: center;
+  float: left;
+}
+.btn_1, .btn_2 {
+  background-color: darkcyan;
+  color: white;
+  margin: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.btn_1 {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.btn_2 {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.btn_1:hover, .btn_2:hover {
+  opacity: 0.8;
+}
+#number {
+  background-color: #ededed;
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  height: 32px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 28px;
+}

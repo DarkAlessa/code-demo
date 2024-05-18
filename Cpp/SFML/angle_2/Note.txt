@@ -1,0 +1,22 @@
+x = r * cos(A);	// A is radian
+y = r * sin(A); // B is radian
+
+
+//-----
+	   (x,y)
+	  /|
+	r/ |
+	/  |b
+       /0__|
+        a
+
+    float radian = atan2(10.0f, 10.0f);
+    float degree = radian * (180 / 3.14159);
+    std::cout << degree << '\n';
+    float r = 1.0f;
+    //float x = std::floor((r * cos(radian)) * 1000) / 1000;
+    //float y = std::floor((r * sin(radian)) * 1000) / 1000;
+    float x = r * cos(radian);
+    float x = r * sin(radian);
+
+
