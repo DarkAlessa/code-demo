@@ -9,27 +9,30 @@ sdl2_dep       = dependency('sdl2')
 sdl2_image_dep = dependency('sdl2_image')
 sdl2_ttf_dep   = dependency('sdl2_ttf')
 
-incdir = include_directories('include')
+incdir = include_directories('src')
+
+imgui_src = [
+    'src/imgui/imgui.cpp',
+    'src/imgui/imgui_demo.cpp',
+    'src/imgui/imgui_draw.cpp',
+    'src/imgui/imgui_tables.cpp',
+    'src/imgui/imgui_widgets.cpp',
+    'src/imgui/imgui_impl_sdl2.cpp',
+    'src/imgui/imgui_impl_sdlrenderer2.cpp',
+]
 
 src = [
     'src/demo.cpp',
-    'src/imgui.cpp',
-    'src/imgui_demo.cpp',
-    'src/imgui_draw.cpp',
-    'src/imgui_tables.cpp',
-    'src/imgui_widgets.cpp',
-    'src/imgui_impl_sdl2.cpp',
-    'src/imgui_impl_sdlrenderer2.cpp',
 ]
 
-c_compiler    = meson.get_compiler('c')
+#c_compiler    = meson.get_compiler('c')
 cpp_compiler  = meson.get_compiler('cpp')
 warning_flags = ['-Wall', '-Werror', '-Wpedantic']
 warning_flags = cpp_compiler.get_supported_arguments(warning_flags)
 add_project_arguments(warning_flags, language: 'cpp')
 
 executable('demo',
-            src,
+            src, imgui_src,
             include_directories: incdir,
             win_subsystem: 'console',
             dependencies: [

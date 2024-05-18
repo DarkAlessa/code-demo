@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
         SDL_RenderFillRect(renderer, &rect);
         
         ImGui::Render();
-        ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+        ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);
         SDL_RenderPresent(renderer);
 
 

@@ -85,7 +85,7 @@ int main(int argc, char** argv) {
         SDL_RenderClear(renderer);
         
         ImGui::Render();
-        ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+        ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);
         SDL_RenderPresent(renderer);
 
         delta = SDL_GetTicks64() - start;
