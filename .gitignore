@@ -165,3 +165,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#/// Dear ImGui library
+**imgui.ini
