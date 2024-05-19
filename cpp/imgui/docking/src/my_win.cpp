@@ -37,7 +37,7 @@ void dockspace() {
 void my_window() {
     ImGuiIO& io = ImGui::GetIO();
     static bool show_metrics_window = false;
-    static bool lock_window = false;
+    static bool lock_window         = false;
     ImGuiWindowFlags imgui_window_flags = 0;
     if (lock_window) imgui_window_flags |= (ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
     if (show_metrics_window) ImGui::ShowMetricsWindow();

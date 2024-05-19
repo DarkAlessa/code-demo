@@ -4,7 +4,8 @@ project('demo', 'c', 'cpp',
 gtkmm_dep = dependency('gtkmm-4.0', version: '>= 4.6.0')
 pangomm_dep = dependency('pangomm-2.48')
 
-incdir = include_directories('include')
+incdir = include_directories('src')
+
 src = [
 	'src/main.cpp',
 	'src/window.cpp',

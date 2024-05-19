@@ -6,7 +6,8 @@ if not gtkmm_dep.found()
   error('gtkmm-4.0 not found')
 endif
 
-incdir = include_directories('include')
+incdir = include_directories('src')
+
 src = [
 	'src/main.cpp',
 	'src/window.cpp',

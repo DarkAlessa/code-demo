@@ -15,7 +15,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/")
 # include directory INTERFACE
 add_library(include_interface INTERFACE)
 target_include_directories(include_interface INTERFACE
-  $<BUILD_LOCAL_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+  $<BUILD_LOCAL_INTERFACE:${CMAKE_SOURCE_DIR}/src>
 )
 
 add_subdirectory(src)
