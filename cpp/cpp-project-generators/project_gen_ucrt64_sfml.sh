@@ -7,7 +7,6 @@ while [[ "${ProjectName}" == '' || "${ProjectName}" =~ ${validation} ]]; do
     read -p $'\e[38;2;255;51;51mInvalid name (a-z, A-Z, 0-9, -, _)!:\e[0m ' ProjectName
 done
 mkdir -p ./${ProjectName}/src \
-         ./${ProjectName}/include \
          ./${ProjectName}/build \
          ./${ProjectName}/assets
 echo -e "\e[38;2;181;255;168mThe project directory named \"${ProjectName}\" has been created. ✓\e[0m"
@@ -56,14 +55,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/")
 #set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
 #set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
 
+# fine SFML package : use "pkgconf --list-all | grep sfml" for show packages
+find_package(SFML 2.6 COMPONENTS network audio graphics window system REQUIRED)
+
 # include directory INTERFACE
 add_library(include_interface INTERFACE)
 target_include_directories(include_interface INTERFACE
-    \$<BUILD_LOCAL_INTERFACE:\${CMAKE_SOURCE_DIR}/include>
+    \$<BUILD_LOCAL_INTERFACE:\${CMAKE_SOURCE_DIR}/src>
 )
-
-# fine SFML package : use "pkgconf --list-all | grep sfml" for show packages
-find_package(SFML 2.6 COMPONENTS network audio graphics window system REQUIRED)
 
 add_executable(${execute} WIN32)
 target_sources(${execute} PRIVATE

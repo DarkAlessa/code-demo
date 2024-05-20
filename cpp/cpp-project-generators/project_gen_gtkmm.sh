@@ -7,7 +7,6 @@ while [[ "${ProjectName}" == '' || "${ProjectName}" =~ ${validation} ]]; do
     read -p $'\e[38;2;255;51;51mInvalid name (a-z, A-Z, 0-9, -, _)!:\e[0m ' ProjectName
 done
 mkdir -p ./${ProjectName}/src \
-         ./${ProjectName}/include \
          ./${ProjectName}/build
 echo -e "\e[38;2;181;255;168mThe project directory named \"${ProjectName}\" has been created. ✓\e[0m"
 
@@ -59,20 +58,22 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}")
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTKMM REQUIRED gtkmm-4.0)
 
-add_executable(${execute} WIN32)
+#add_executable(${execute} WIN32)
+add_executable(${execute})
 target_sources(${execute} PRIVATE
     \${CMAKE_SOURCE_DIR}/src/${execute}.cpp
     \${CMAKE_SOURCE_DIR}/src/app.cpp
 )
 
-target_include_directories(${execute} PUBLIC
-    \${CMAKE_SOURCE_DIR}/include
+target_include_directories(${execute} PRIVATE
+    \${CMAKE_SOURCE_DIR}/src
     \${GTKMM_INCLUDE_DIRS}
 )
 
-target_link_directories(${execute} PUBLIC \${GTKMM_LIBRARY_DIRS})
-
-target_link_libraries(${execute} PRIVATE \${GTKMM_LIBRARIES} compiler_flags)
+target_link_libraries(${execute} PRIVATE
+    compiler_flags
+    \${GTKMM_LIBRARIES}
+)
 EOF
 
 #--- Add code simple
@@ -95,7 +96,7 @@ int main(int argc, char *argv[]) {
 EOF
 
 #--- app.h
-cat << 'EOF' > ./${ProjectName}/include/app.h
+cat << 'EOF' > ./${ProjectName}/src/app.h
 #ifndef APP_H
 #define APP_H
 

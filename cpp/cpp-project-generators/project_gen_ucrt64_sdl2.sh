@@ -7,7 +7,6 @@ while [[ "${ProjectName}" == '' || "${ProjectName}" =~ ${validation} ]]; do
     read -p $'\e[38;2;255;51;51mInvalid name (a-z, A-Z, 0-9, -, _)!:\e[0m ' ProjectName
 done
 mkdir -p ./${ProjectName}/src \
-         ./${ProjectName}/include \
          ./${ProjectName}/build \
          ./${ProjectName}/assets
 echo -e "\e[38;2;181;255;168mThe project directory named \"${ProjectName}\" has been created. ✓\e[0m"
@@ -56,19 +55,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/")
 #set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
 #set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
 
-# include directory INTERFACE
-add_library(include_interface INTERFACE)
-target_include_directories(include_interface INTERFACE
-    \$<BUILD_LOCAL_INTERFACE:\${CMAKE_SOURCE_DIR}/include>
-    \$<BUILD_LOCAL_INTERFACE:\${SDL2_INCLUDE_DIRS}>
-)
-
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 #find_package(SDL2_gfx REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 #find_package(SDL2_net REQUIRED)
+
+# include directory INTERFACE
+add_library(include_interface INTERFACE)
+target_include_directories(include_interface INTERFACE
+    \$<BUILD_LOCAL_INTERFACE:\${CMAKE_SOURCE_DIR}/src>
+    \$<BUILD_LOCAL_INTERFACE:\${SDL2_INCLUDE_DIRS}>
+)
 
 #add_executable(${execute} WIN32)
 add_executable(${execute})
@@ -121,7 +120,7 @@ int main(int argc, char** argv) {
 }
 EOF
 
-cat << 'EOF' > ./${ProjectName}/include/app.h
+cat << 'EOF' > ./${ProjectName}/src/app.h
 #ifndef APP_H
 #define APP_H
 
