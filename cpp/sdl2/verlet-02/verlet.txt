@@ -1,9 +1,9 @@
 ## Verlet integration (without velocities)
 x(n + 1) = 2x(n) - x(n - 1) + a(n)*(dt^2)           ---(1)
-         = x(n) + x(n) - x(n - 1) + a(n)*(dt^2)		: x(n) - x(n - 1) = v(n - 1)*dt
+         = x(n) + x(n) - x(n - 1) + a(n)*(dt^2)     : x(n) - x(n - 1) = v(n - 1)*dt
          = x(n) + v(n - 1)*dt + a(n)*(dt^2)
-         = x(n) + [v(n - 1) + a(n)*dt]*dt		    : a(n) = v(n)/dt
-	     = x(n) + [v(n - 1) + v(n)]*dt
+         = x(n) + [v(n - 1) + a(n)*dt]*dt           : a(n) = v(n)/dt
+         = x(n) + [v(n - 1) + v(n)]*dt
 x(n + 1) = x(n) + v(n)*dt                           ---(2)
 
 ## Velocity Verlet

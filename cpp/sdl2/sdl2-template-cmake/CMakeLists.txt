@@ -32,7 +32,7 @@ add_executable(game)
 target_sources(game PRIVATE
     ${CMAKE_SOURCE_DIR}/src/main.cpp
     ${CMAKE_SOURCE_DIR}/src/game.cpp
-    ${CMAKE_SOURCE_DIR}/src/engine/fps.cpp	
+    ${CMAKE_SOURCE_DIR}/src/engine/fps.cpp  
 )
 
 target_link_libraries(game PRIVATE
