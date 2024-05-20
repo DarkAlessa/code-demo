@@ -41,7 +41,7 @@ fi
 
 #--- CMakeLists.txt
 cat << EOF > ./${ProjectName}/CMakeLists.txt
-cmake_minimum_required(VERSION 3.26 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 project(${CMakeProjectName} VERSION 1.0.0 LANGUAGES C CXX)
 
 # compiler flags/options INTERFACE
@@ -49,73 +49,108 @@ add_library(compiler_flags INTERFACE)
 target_compile_features(compiler_flags INTERFACE \$<BUILD_LOCAL_INTERFACE:cxx_std_23>)
 target_compile_options(compiler_flags BEFORE INTERFACE
     \$<BUILD_LOCAL_INTERFACE:-Wall;-Werror;-Wpedantic>
-    \$<BUILD_LOCAL_INTERFACE:\${GTKMM_CFLAGS_OTHER}>
 )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}")
-#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_SOURCE_DIR}/")
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTKMM REQUIRED gtkmm-4.0)
+find_package(wxWidgets REQUIRED)
 
-add_executable(${execute} WIN32)
+# include UsewxWidgets.cmake file to set up necessary variables
+include(\${wxWidgets_USE_FILE})
+
+# include directory INTERFACE
+add_library(include_interface INTERFACE)
+target_include_directories(include_interface INTERFACE
+    \$<BUILD_LOCAL_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+)
+
+#add_executable(${execute} WIN32)
+add_executable(${execute})
 target_sources(${execute} PRIVATE
     \${CMAKE_SOURCE_DIR}/src/${execute}.cpp
-    \${CMAKE_SOURCE_DIR}/src/app.cpp
 )
 
-target_include_directories(${execute} PUBLIC
-    \${CMAKE_SOURCE_DIR}/include
-    \${GTKMM_INCLUDE_DIRS}
+target_link_libraries(${execute} PRIVATE
+    include_interface
+    compiler_flags
+    \${wxWidgets_LIBRARIES}
 )
 
-target_link_directories(${execute} PUBLIC \${GTKMM_LIBRARY_DIRS})
-
-target_link_libraries(${execute} PRIVATE \${GTKMM_LIBRARIES} compiler_flags)
+#message(STATUS "==========================================================")
+#message(STATUS "\\\${wxWidgets_USE_FILE}:     \${wxWidgets_USE_FILE}")
+#message(STATUS "\\\${wxWidgets_INCLUDE_DIRS}: \${wxWidgets_INCLUDE_DIRS}")
+#message(STATUS "==========================================================")
 EOF
 
 #--- Add code simple
 cat << 'EOF' > ./${ProjectName}/src/${execute}.cpp
-#include "app.h"
-#include <gtkmm/application.h>
-#include <gtkmm/settings.h>
-#include <iostream>
-
-int main(int argc, char *argv[]) {
-    auto app = Gtk::Application::create("demo");
-
-    /* Dark theme
-    auto settings = Gtk::Settings::get_default();
-    settings->property_gtk_application_prefer_dark_theme() = true;
-    */
-
-    return app->make_window_and_run<My_window>(argc, argv);
-}
-EOF
-
-#--- app.h
-cat << 'EOF' > ./${ProjectName}/include/app.h
-#ifndef APP_H
-#define APP_H
-
-#include <gtkmm/window.h>
-
-class My_window : public Gtk::Window {
+// Start of wxWidgets "Hello World" Program
+#include <wx/wx.h>
+ 
+class MyApp : public wxApp {
 public:
-    My_window();
+    bool OnInit() override;
 };
-
-#endif // APP_H
-EOF
-
-#--- app.cpp
-cat << 'EOF' > ./${ProjectName}/src/app.cpp
-#include "app.h"
-
-My_window::My_window() {
-    set_title("Demo");
-    set_default_size(640, 420);
+ 
+wxIMPLEMENT_APP(MyApp);
+ 
+class MyFrame : public wxFrame {
+public:
+    MyFrame();
+ 
+private:
+    void OnHello(wxCommandEvent& event);
+    void OnExit(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+};
+ 
+enum {
+    ID_Hello = 1
+};
+ 
+bool MyApp::OnInit() {
+    MyFrame *frame = new MyFrame();
+    frame->Show(true);
+    return true;
+}
+ 
+MyFrame::MyFrame()
+    : wxFrame(nullptr, wxID_ANY, "Hello World")
+{
+    wxMenu *menuFile = new wxMenu;
+    menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
+                     "Help string shown in status bar for this menu item");
+    menuFile->AppendSeparator();
+    menuFile->Append(wxID_EXIT);
+ 
+    wxMenu *menuHelp = new wxMenu;
+    menuHelp->Append(wxID_ABOUT);
+ 
+    wxMenuBar *menuBar = new wxMenuBar;
+    menuBar->Append(menuFile, "&File");
+    menuBar->Append(menuHelp, "&Help");
+ 
+    SetMenuBar( menuBar );
+ 
+    CreateStatusBar();
+    SetStatusText("Welcome to wxWidgets!");
+ 
+    Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
+    Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
+    Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
+}
+ 
+void MyFrame::OnExit(wxCommandEvent& event) {
+    Close(true);
+}
+ 
+void MyFrame::OnAbout(wxCommandEvent& event) {
+    wxMessageBox("This is a wxWidgets Hello World example",
+                 "About Hello World", wxOK | wxICON_INFORMATION);
+}
+ 
+void MyFrame::OnHello(wxCommandEvent& event) {
+    wxLogMessage("Hello world from wxWidgets!");
 }
 EOF
 

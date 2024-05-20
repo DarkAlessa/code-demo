@@ -195,8 +195,7 @@ cat << EOF > ./${ProjectName}/.vscode/c_cpp_properties.json
 {
   "env": {
     "myDefaultIncludePath": [
-      "\${workspaceFolder}",
-      "\${workspaceFolder}/include"
+      "\${workspaceFolder}/**"
     ],
     "myCompilerPath": "C:/msys64/ucrt64/bin/g++.exe"
   },
