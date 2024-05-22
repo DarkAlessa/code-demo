@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
-project(elsa VERSION 1.0.0 LANGUAGES C CXX)
+project(sizer VERSION 1.0.0 LANGUAGES C CXX)
 
 # compiler flags/options INTERFACE
 add_library(compiler_flags INTERFACE)
@@ -21,13 +21,13 @@ target_include_directories(include_interface INTERFACE
     $<BUILD_LOCAL_INTERFACE:/src>
 )
 
-#add_executable(elsa WIN32)
-add_executable(elsa)
-target_sources(elsa PRIVATE
-    ${CMAKE_SOURCE_DIR}/src/elsa.cpp
+#add_executable(sizer WIN32)
+add_executable(sizer)
+target_sources(sizer PRIVATE
+    ${CMAKE_SOURCE_DIR}/src/sizer.cpp
 )
 
-target_link_libraries(elsa PRIVATE
+target_link_libraries(sizer PRIVATE
     include_interface
     compiler_flags
     ${wxWidgets_LIBRARIES}

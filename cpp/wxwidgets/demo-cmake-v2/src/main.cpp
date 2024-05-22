@@ -1,5 +1,8 @@
 // Start of wxWidgets "Hello World" Program
-#include <wx/wx.h>
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+    #include <wx/wx.h>
+#endif
  
 class MyApp : public wxApp {
 public:
@@ -29,7 +32,7 @@ bool MyApp::OnInit() {
 }
  
 MyFrame::MyFrame()
-    : wxFrame(nullptr, wxID_ANY, "Hello World")
+    : wxFrame(nullptr, wxID_ANY, "Hello World", wxDefaultPosition, wxSize(640, 480))
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
