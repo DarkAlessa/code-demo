@@ -26,7 +26,8 @@ MyFrame::MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
 {
     wxPanel *panel_top = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(200, 100));
     panel_top->SetBackgroundColour(wxColor(100, 100, 200));
-    [[maybe_unused]] wxButton* bt_a = new wxButton(panel_top, wxID_ANY, "LISA", wxPoint(10, 10), wxDefaultSize, wxBORDER_NONE);
+    [[maybe_unused]] wxSlider* slider = new wxSlider(panel_top, wxID_ANY, 100, 0, 200, wxDefaultPosition, wxSize(400, -1));
+    [[maybe_unused]] wxButton* bt_a = new wxButton(panel_top, wxID_ANY, "LISA", wxPoint(10, 40), wxDefaultSize, wxBORDER_NONE);
 
     wxPanel *panel_bottom = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(200, 100));
     panel_bottom->SetBackgroundColour(wxColor(100, 200, 100));

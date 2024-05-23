@@ -16,10 +16,12 @@ add_executable(demo
   ${CMAKE_SOURCE_DIR}/src/demo.cpp
   ${CMAKE_SOURCE_DIR}/src/app.cpp
 )
+
 target_include_directories(demo PRIVATE
   ${GTKMM_INCLUDE_DIRS} 
   ${CMAKE_SOURCE_DIR}/src
 )
+
 target_compile_options(demo PRIVATE
   ${GTKMM_CFLAGS_OTHER}
   ${CMAKE_CXX_FLAGS}
@@ -27,5 +29,7 @@ target_compile_options(demo PRIVATE
   -Werror
   -Wpedantic
 )
-target_link_directories(demo PRIVATE ${GTKMM_LIBRARY_DIRS})
+
+#target_link_directories(demo PRIVATE ${GTKMM_LIBRARY_DIRS})
+
 target_link_libraries(demo PRIVATE ${GTKMM_LIBRARIES})

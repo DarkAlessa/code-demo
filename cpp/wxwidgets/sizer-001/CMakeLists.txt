@@ -32,8 +32,3 @@ target_link_libraries(sizer PRIVATE
     compiler_flags
     ${wxWidgets_LIBRARIES}
 )
-
-#message(STATUS "==========================================================")
-#message(STATUS "\${wxWidgets_USE_FILE}:     ${wxWidgets_USE_FILE}")
-#message(STATUS "\${wxWidgets_INCLUDE_DIRS}: ${wxWidgets_INCLUDE_DIRS}")
-#message(STATUS "==========================================================")
