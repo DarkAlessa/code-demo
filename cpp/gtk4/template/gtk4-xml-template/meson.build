@@ -20,7 +20,7 @@ src += gnome.compile_resources('demo-resources',
 
     # ถ้าไม่มี source_dir: 'src' ต้องเพิ่ม src ในไฟล์ *.demo.gresource.xml
     # 👉 <file preprocess="xml-stripblanks">src/builder.ui</file>
-    # และใน demo_window_class_init()
+    # และใน demo_window_class_init() ใน demo-window.c
     # 👉 gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/org/gtk/demo/src/builder.ui");
 )
 

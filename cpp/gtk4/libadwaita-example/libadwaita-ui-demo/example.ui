@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="adwaita" version="1.0"/>
+  <object class="GtkApplicationWindow" id="main_window">
+    <property name="title">Hello, Adwaita!</property>
+    <property name="default-width">400</property>
+    <property name="default-height">300</property>
+    <child>
+      <object class="GtkButton" id="button">
+        <property name="label">Click Me</property>
+        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+      </object>
+    </child>
+  </object>
+</interface>
