@@ -13,7 +13,7 @@ struct _MyApp {
 
 G_DEFINE_TYPE(MyApp, my_app, ADW_TYPE_APPLICATION)
 
-G_MODULE_EXPORT void on_button_clicked(GtkButton *button, gpointer user_data) {
+G_MODULE_EXPORT void on_button_clicked(GtkWidget *widget, gpointer user_data) {
     g_print("Button clicked!\n");
 }
 
@@ -28,7 +28,8 @@ static void my_app_activate(GApplication *app) {
     gtk_window_set_application(GTK_WINDOW(window), GTK_APPLICATION(app));
 
     button = gtk_builder_get_object(builder, "button");
-    g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), NULL);
+//  สามารถประกาศ signal ใน .ui ไฟล์ได้ (ดูใน example.ui)
+//  g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), NULL);
 
     gtk_window_present(GTK_WINDOW(window));
 }

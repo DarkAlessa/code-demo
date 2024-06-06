@@ -1,7 +1,6 @@
 // build command
 // $ gcc myapp.c -o myapp `pkg-config --cflags --libs gtk4 libadwaita-1`
 
-
 #include <gtk/gtk.h>
 #include <libadwaita-1/adwaita.h>
 
