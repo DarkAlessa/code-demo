@@ -6,11 +6,11 @@
 
 class My_window : public Gtk::Window {
 public:
-	My_window();
-	virtual ~My_window() noexcept;
+    My_window();
+    virtual ~My_window() noexcept;
 
 protected:
-	My_Area* my_area;
+    My_Area* my_area;
 };
 
 #endif // WINDOW_H

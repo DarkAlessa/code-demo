@@ -16,6 +16,6 @@ static void demo_window_init(DemoWindow *win) {
     gtk_widget_init_template(GTK_WIDGET(win));
 }
 
-static void demo_window_class_init(DemoWindowClass *class) {
-    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/org/gtk/demo/builder.ui");
+static void demo_window_class_init(DemoWindowClass *klass) {
+    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/org/gtk/demo/builder.ui");
 }

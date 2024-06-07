@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="progress_ring.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-	<title>Progress Ring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="progress_ring.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Progress Ring</title>
 </head>
 <body>
-	<svg class="progress_ring">
-		<defs>
-	    <linearGradient id="circle_outer_grad" x1="0%" y1="0%" x2="100%" y2="60%">
-      	<stop offset="0%" stop-color="red" stop-opacity="1" />
-      	<stop offset="100%" stop-color="gold" stop-opacity="1" />
-	    </linearGradient>
-	  </defs>
-		<circle class="ring ring_inner" cx="200" cy="200" r="100"/>
-		<circle class="ring ring_outer" cx="200" cy="200" r="100"/>
-		<circle class="ring ring_blur" cx="200" cy="200" r="100"/>
-		<text class="label" x="50%" y="50%"	fill="white" dominant-baseline="middle"></text>
-	</svg>
+    <svg class="progress_ring">
+        <defs>
+        <linearGradient id="circle_outer_grad" x1="0%" y1="0%" x2="100%" y2="60%">
+        <stop offset="0%" stop-color="red" stop-opacity="1" />
+        <stop offset="100%" stop-color="gold" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+        <circle class="ring ring_inner" cx="200" cy="200" r="100"/>
+        <circle class="ring ring_outer" cx="200" cy="200" r="100"/>
+        <circle class="ring ring_blur" cx="200" cy="200" r="100"/>
+        <text class="label" x="50%" y="50%" fill="white" dominant-baseline="middle"></text>
+    </svg>
 <script src="progress_ring.js"></script>
 </body>
 </html>

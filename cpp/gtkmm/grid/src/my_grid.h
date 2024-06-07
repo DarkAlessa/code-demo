@@ -6,15 +6,15 @@
 
 class My_Grid : public Gtk::Grid {
 public:
-	My_Grid();
-	virtual ~My_Grid() noexcept;
-	
+    My_Grid();
+    virtual ~My_Grid() noexcept;
+    
 protected:
-	Gtk::Button bt_a;
-	Gtk::Button bt_b;
-	Gtk::Button bt_c;
-	Gtk::Button bt_d;
-	Gtk::Button bt_e;
+    Gtk::Button bt_a;
+    Gtk::Button bt_b;
+    Gtk::Button bt_c;
+    Gtk::Button bt_d;
+    Gtk::Button bt_e;
 };
 
 #endif // SEVEN_SEGMENT_H

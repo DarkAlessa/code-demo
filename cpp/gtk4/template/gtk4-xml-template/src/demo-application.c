@@ -21,7 +21,7 @@ static void demo_application_activate(GApplication *app) {
     gtk_window_present(GTK_WINDOW(win));
 }
 
-static void demo_application_class_init(DemoApplicationClass *class) {
-    G_APPLICATION_CLASS(class)->activate = demo_application_activate;
+static void demo_application_class_init(DemoApplicationClass *klass) {
+    G_APPLICATION_CLASS(klass)->activate = demo_application_activate;
 }
 

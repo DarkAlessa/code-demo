@@ -7,9 +7,9 @@ pangomm_dep = dependency('pangomm-2.48')
 incdir = include_directories('src')
 
 src = [
-	'src/main.cpp',
-	'src/window.cpp',
-	'src/text.cpp'
+    'src/main.cpp',
+    'src/window.cpp',
+    'src/text.cpp'
 ]
 
 c_compiler    = meson.get_compiler('c')
