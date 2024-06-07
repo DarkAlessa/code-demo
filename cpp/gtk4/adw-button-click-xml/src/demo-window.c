@@ -3,7 +3,6 @@
 struct _DemoWindow {
     AdwApplicationWindow parent;
     AdwHeaderBar* header_bar;
-    AdwOverlaySplitView* overlay;
     GtkButton* button;
     GtkSeparator* v_sep;
 
@@ -34,11 +33,10 @@ void button_cb_3() {
 static void demo_window_class_init(DemoWindowClass *klass) {
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/org/gtk/demo/builder.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), DemoWindow, header_bar);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), DemoWindow, overlay);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), DemoWindow, button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), DemoWindow, v_sep);
 
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS(klass), button_cb_1);
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS(klass), button_cb_2);
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS(klass), button_cb_3);
+    gtk_widget_class_bind_template_callback(GTK_WIDGET_CLASS(klass), button_cb_1);
+    gtk_widget_class_bind_template_callback(GTK_WIDGET_CLASS(klass), button_cb_2);
+    gtk_widget_class_bind_template_callback(GTK_WIDGET_CLASS(klass), button_cb_3);
 }
