@@ -5,6 +5,7 @@ My_window::My_window() : my_area(Gtk::manage(new My_Area(100.0))) {
     set_default_size(400, 400);
     my_area->set_content_width(400);
     my_area->set_content_height(400);
+    my_area->set_expand(true);
     set_child(*my_area);
 }
 
