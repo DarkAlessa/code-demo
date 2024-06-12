@@ -9,10 +9,10 @@ Border::Border(double width, double height) : width(width), height(height) {}
 Seven_Segment::Seven_Segment(double a, double b, double g) : a(a), b(b), g(g) {}
 
 My_Area::My_Area(double text_height)
-: pos{0.0, 0.0}
-, border{text_height * WIDTH_MULTIPLIER, text_height}
-, seg{text_height * A_MULTIPLIER, text_height * B_MULTIPLIER, text_height * G_MULTIPLIER}
-, count(0)
+:   pos{0.0, 0.0},
+    border{text_height * WIDTH_MULTIPLIER, text_height},
+    seg{text_height * A_MULTIPLIER, text_height * B_MULTIPLIER, text_height * G_MULTIPLIER},
+    count(0)
 {
     Glib::signal_timeout().connect(sigc::mem_fun(*this, &My_Area::on_timeout), 400);
     set_draw_func(sigc::mem_fun(*this, &My_Area::on_draw));
