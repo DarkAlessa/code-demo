@@ -31,7 +31,11 @@ Game::Game(const char* title, int width, int height) : win_width(width), win_hei
     }
 }
 
-Game::~Game() = default;
+Game::~Game() noexcept {
+    if (renderer.get()) renderer.reset();
+    if (window.get()) window.reset();
+    SDL_Quit();
+}
 
 void Game::setFPS(unsigned int fps) {
     this->fps.setFPS(fps);

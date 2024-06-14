@@ -10,7 +10,7 @@
 class Game {
 public:
     Game(const char*, int, int);
-    ~Game();
+    ~Game() noexcept;
 
     void setFPS(unsigned int);
     void run();
