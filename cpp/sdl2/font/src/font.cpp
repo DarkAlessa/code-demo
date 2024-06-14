@@ -37,13 +37,13 @@ private:
 
 int main(int argc, char** argv) {
 //// Init
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     assert((SDL_Init(SDL_INIT_EVERYTHING) == 0) && "SDL2 initialization failed.!");
     assert((TTF_Init() == 0) && "TTF initialization failed.!");
     SDL_Window* window = SDL_CreateWindow("Verlet", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN);
     assert(window && "error: can't create a window.!");
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     assert(renderer && "error: can't create a SDL_Renderer.!");
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
 //// Font
     TTF_Font* font = TTF_OpenFont("./assets/font/Consola.TTF", 42);

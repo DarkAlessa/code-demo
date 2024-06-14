@@ -21,6 +21,7 @@ public:
     float getEndY();
     sf::Vertex* getLine();
     ~Line();
+    
 private:
     sf::Vector2f start;
     sf::Vector2f end;

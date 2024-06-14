@@ -14,13 +14,13 @@
 #define BORDER_RADIUS 4.0f
 
 int main(int argc, char** argv) {
-	// SDL init
-	assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
-	SDL_WindowFlags window_flags = static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN);
-	SDL_Window* window = SDL_CreateWindow("Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, window_flags);
-	assert(window);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	assert(renderer);
+    // SDL init
+    assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
+    SDL_WindowFlags window_flags = static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, window_flags);
+    assert(window);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    assert(renderer);
     SDL_SetWindowMinimumSize(window, WIN_W, WIN_H);
 
     // Window icon
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
     style.WindowMinSize  = {240, 200};
     //style.Colors[ImGuiCol_WindowBg] = ImVec4(0.131f, 0.242f, 0.133f, 0.9f);
 
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
     ImVec4 rect_color  = ImVec4(0.255f, 0.255f, 0.255f, 1.00f);
 
     //// FPS --------------------------------------
@@ -62,19 +62,19 @@ int main(int argc, char** argv) {
 
     SDL_Rect rect = {.x = 440, .y = 280, .w = 100, .h = 100};
 
-	// Loop
-	bool running = true;
-	while (running) {
+    // Loop
+    bool running = true;
+    while (running) {
         frameStart = SDL_GetTicks64();
-		SDL_Event event;
-		while (SDL_PollEvent(&event)) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL2_ProcessEvent(&event);
-			if (event.type == SDL_QUIT)
+            if (event.type == SDL_QUIT)
                 running = false;
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(window))
                 running = true;
-		}
-		
+        }
+        
         // Start the Dear ImGui frame
         ImGui_ImplSDLRenderer2_NewFrame();
         ImGui_ImplSDL2_NewFrame();
@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
         ImGui::ColorEdit3("Rect", (float*)&rect_color, ImGuiColorEditFlags_DisplayRGB);
         ImGui::End();
 
-		// Rendering
+        // Rendering
         SDL_RenderSetScale(renderer, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
         SDL_SetRenderDrawColor(renderer, (Uint8)(clear_color.x * 255), (Uint8)(clear_color.y * 255), (Uint8)(clear_color.z * 255), (Uint8)(clear_color.w * 255));
         SDL_RenderClear(renderer);
@@ -111,9 +111,9 @@ int main(int argc, char** argv) {
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
         }
-	}
+    }
 
-	// Cleanup
+    // Cleanup
     ImGui_ImplSDLRenderer2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
@@ -122,5 +122,5 @@ int main(int argc, char** argv) {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-	return 0;
+    return 0;
 }

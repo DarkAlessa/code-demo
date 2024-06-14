@@ -3,18 +3,21 @@
 #include <cassert>
 
 Game::Game(const char* title, int width, int height) : win_width(width), win_height(height) {
+    if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
+        std::cerr << "Warning: Linear texture filtering not enabled!" << std::endl;
+    }
+    
     // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "SDL initialization failed: " << SDL_GetError() << '\n';
-        SDL_Quit();
-        return;
+        return; // No need to call SDL_Quit() because SDL was not initialized
     }
 
     // Create window
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, win_width, win_height, SDL_WINDOW_SHOWN);
     if (!window) {
         std::cerr << "Window creation failed: " << SDL_GetError() << '\n';
-        SDL_Quit();
+        SDL_Quit(); // SDL was initialized, so we need to clean up
         return;
     }
 
@@ -26,13 +29,11 @@ Game::Game(const char* title, int width, int height) : win_width(width), win_hei
         SDL_Quit();
         return;
     }
-
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 }
 
 Game::~Game() noexcept {
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    if (renderer) SDL_DestroyRenderer(renderer);
+    if (window)   SDL_DestroyWindow(window);
     SDL_Quit();
 };
 

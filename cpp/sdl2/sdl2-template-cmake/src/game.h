@@ -9,7 +9,7 @@
 class Game {
 public:
     Game(const char*, int, int);
-    virtual ~Game();
+    virtual ~Game() noexcept;
 
     void setFPS(unsigned int);
     void run();
