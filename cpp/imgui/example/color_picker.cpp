@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
     Uint64 frameStart;
     Uint64 frameTime;
 
-    SDL_Rect rect = {.x = 440, .y = 280, .w = 100, .h = 100};
+    SDL_Rect rect = {440, 280, 100, 100};
 
     // Loop
     bool running = true;
@@ -69,10 +69,15 @@ int main(int argc, char** argv) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL2_ProcessEvent(&event);
-            if (event.type == SDL_QUIT)
-                running = false;
-            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(window))
+            if (event.type == SDL_QUIT) running = false;
+            
+            if (event.type == SDL_WINDOWEVENT &&
+                event.window.event == SDL_WINDOWEVENT_CLOSE &&
+                event.window.windowID == SDL_GetWindowID(window))
+            {
                 running = true;
+                break;
+            }
         }
         
         // Start the Dear ImGui frame

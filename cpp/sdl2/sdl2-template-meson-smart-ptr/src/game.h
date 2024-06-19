@@ -18,7 +18,7 @@ public:
 private:
     std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> window{nullptr, SDL_DestroyWindow};
     std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> renderer{nullptr, SDL_DestroyRenderer};
-    bool running   = true;
+    bool running   = false;
     FrameRate fps  = {60};
     int win_width;
     int win_height;

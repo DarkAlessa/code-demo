@@ -29,6 +29,8 @@ Game::Game(const char* title, int width, int height) : win_width(width), win_hei
         SDL_Quit();
         return;
     }
+
+    running = true;
 }
 
 Game::~Game() noexcept {

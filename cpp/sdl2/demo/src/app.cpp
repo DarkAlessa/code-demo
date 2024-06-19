@@ -4,10 +4,12 @@
 #include <cassert>
 
 App::App(const char* title, int width, int height) {
-    // Initialize SDL
+    if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
+        std::cerr << "Warning: Linear texture filtering not enabled!" << '\n';
+    }
+
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "SDL initialization failed: " << SDL_GetError() << '\n';
-        SDL_Quit();
         return;
     }
 
@@ -27,6 +29,8 @@ App::App(const char* title, int width, int height) {
         SDL_Quit();
         return;
     }
+
+    running = true;
 }
 
 App::~App() noexcept {

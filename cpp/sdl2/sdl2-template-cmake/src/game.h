@@ -17,7 +17,7 @@ public:
 private:
     SDL_Window*   window   = nullptr;
     SDL_Renderer* renderer = nullptr;
-    bool running   = true;
+    bool running   = false;
     FrameRate fps  = {60};
     int win_width;
     int win_height;

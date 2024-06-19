@@ -23,7 +23,7 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* texture;
-    bool running = true;
+    bool running = false;
     SDL_Rect des = {120, 120, 60, 60};
     FrameRate fps = {60};
 };
