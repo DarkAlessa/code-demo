@@ -20,7 +20,8 @@ public:
     float getEndX();
     float getEndY();
     sf::Vertex* getLine();
-    ~Line();
+    virtual ~Line();
+
 private:
     sf::Vector2f start;
     sf::Vector2f end;
