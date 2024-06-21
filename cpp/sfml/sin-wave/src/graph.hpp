@@ -1,14 +1,14 @@
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef GRAPH_HPP
+#define GRAPH_HPP
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System/String.hpp>
 
-class Game {
+class Graph {
 public:
-    Game(unsigned, unsigned, const sf::String&);
-    virtual ~Game();
+    Graph(unsigned, unsigned, const sf::String&);
+    virtual ~Graph();
     auto run() -> void;
 
 private:
@@ -20,7 +20,10 @@ private:
     unsigned width;
     unsigned height;
     sf::RenderWindow window;
-    sf::RectangleShape rec;
+
+    sf::VertexArray g_a;
+    sf::VertexArray g_b;
+    sf::Vertex line[2];
 };
 
-#endif // GAME_HPP
+#endif // GRAPH_HPP
