@@ -2,8 +2,6 @@
 #define GAME_H
 
 #include "engine/fps.h"
-#include <iostream>
-#include <string>
 #include <SDL2/SDL.h>
 
 class Game {
@@ -15,16 +13,17 @@ public:
     void run();
 
 private:
-    SDL_Window*   window   = nullptr;
-    SDL_Renderer* renderer = nullptr;
-    bool running   = false;
-    FrameRate fps  = {60};
-    int win_width;
-    int win_height;
-
     void handleEvents();
     void update();
     void render() const;
+
+private:
+    int win_width;
+    int win_height;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    bool running = false;
+    FrameRate fps{60};
 };
 
 #endif  // GAME_H

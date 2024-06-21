@@ -2,8 +2,6 @@
 #define APP_H
 
 #include "fps.h"
-#include <iostream>
-#include <string>
 #include <SDL2/SDL.h>
 
 class App {
@@ -20,12 +18,13 @@ private:
     void update();
     void render();
 
+private:
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* texture;
     bool running = false;
-    SDL_Rect des = {120, 120, 60, 60};
-    FrameRate fps = {60};
+    SDL_Rect des{120, 120, 60, 60};
+    FrameRate fps{60};
 };
 
 #endif

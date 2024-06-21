@@ -93,15 +93,15 @@ int main(int argc, char** argv) {
         if (show_demo_window) ImGui::ShowDemoWindow();
 
         ImGui::Begin("Performance", NULL, imgui_window_flags);
-        ImGui::Checkbox("Lock Window", &window_lock);
-        ImGui::Separator();
-        ImGui::Text("Frame Time : %.1f ms/frame", 1000.0f / io.Framerate);
-        ImGui::Text("Frame Rate : %d FPS", static_cast<int>(io.Framerate));
-        ImGui::Separator();
-        ImGui::ColorEdit3("BG", (float*)&clear_color, ImGuiColorEditFlags_DisplayRGB);
-        ImGui::ColorEdit3("Rect", (float*)&rect_color, ImGuiColorEditFlags_DisplayRGB);
-        ImGui::Separator();
-        ImGui::Checkbox("Open Demo Window", &show_demo_window);
+            ImGui::Checkbox("Lock Window", &window_lock);
+            ImGui::Separator();
+            ImGui::Text("Frame Time : %.1f ms/frame", 1000.0f / io.Framerate);
+            ImGui::Text("Frame Rate : %d FPS", static_cast<int>(io.Framerate));
+            ImGui::Separator();
+            ImGui::ColorEdit3("BG", (float*)&clear_color, ImGuiColorEditFlags_DisplayRGB);
+            ImGui::ColorEdit3("Rect", (float*)&rect_color, ImGuiColorEditFlags_DisplayRGB);
+            ImGui::Separator();
+            ImGui::Checkbox("Open Demo Window", &show_demo_window);
         ImGui::End();
 
         // Rendering

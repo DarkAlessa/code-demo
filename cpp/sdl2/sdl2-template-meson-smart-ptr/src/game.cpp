@@ -1,4 +1,5 @@
 #include "game.h"
+#include <iostream>
 //#define NDEBUG
 #include <cassert>
 

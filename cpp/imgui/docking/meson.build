@@ -1,4 +1,4 @@
-project('docking', 'c', 'cpp',
+project('docking', 'cpp',
     default_options: 'cpp_std=c++23'
 )
 
@@ -29,10 +29,7 @@ warning_flags = ['-Wall', '-Werror', '-Wpedantic']
 warning_flags = cpp_compiler.get_supported_arguments(warning_flags)
 add_project_arguments(warning_flags, language: 'cpp')
 
-executable(
-    'docking',
-    src,
-    imgui_src,
+executable('docking', src, imgui_src,
     include_directories: incdir,
     win_subsystem: 'windows',
     dependencies: [

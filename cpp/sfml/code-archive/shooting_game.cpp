@@ -61,15 +61,15 @@ int main() {
     sf::Clock clock;
     sf::Time time;
 
-    while(window.isOpen()) {
+    while (window.isOpen()) {
         playerPosition = player.getPosition();
         sf::Event event;
-        while(window.pollEvent(event)) {
-            if(event.type == sf::Event::Closed) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if(event.type == sf::Event::MouseButtonPressed) {
-                if(event.mouseButton.button == sf::Mouse::Left) {
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
                 bullet.bulletShape.setPosition(playerPosition.x + 3.25f, window.getSize().y - 6.f);
                 magazine.push_back(bullet);
                 sound.play();
@@ -77,36 +77,36 @@ int main() {
       } 
         }
         time = clock.getElapsedTime();
-        if(time.asMilliseconds() > 800) {
+        if (time.asMilliseconds() > 800) {
             x_pos = dist(gen) % 380;
             em.enemy.setPosition(x_pos, -20.f);
             enemyTile.push_back(em);
             clock.restart();
         }
         // Enemy move
-        for(size_t i = 0; i < enemyTile.size(); i++) {
+        for (size_t i = 0; i < enemyTile.size(); i++) {
             enemyTile[i].enemy.move(sf::Vector2f(0.f, 0.8f));
-            if(enemyTile[i].enemy.getPosition().y > window.getSize().y) {
+            if (enemyTile[i].enemy.getPosition().y > window.getSize().y) {
                 enemyTile.erase(enemyTile.begin() + i);
             }
         }
         // Shooting 
-        for(size_t i = 0; i < magazine.size(); i++) {
+        for (size_t i = 0; i < magazine.size(); i++) {
             magazine[i].bulletShape.move(sf::Vector2f(0, -bulletVelocity));
-            if(magazine[i].bulletShape.getPosition().y < 0) {
+            if (magazine[i].bulletShape.getPosition().y < 0) {
                 magazine.erase(magazine.begin() + i);
             }
         }
         // Player move
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(sf::Vector2f(-playerMoveSpeed, 0));
-            if(playerPosition.x <= 0) {
+            if (playerPosition.x <= 0) {
                 player.setPosition(0, (window.getSize().y - 10.f));
             }
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             player.move(sf::Vector2f(playerMoveSpeed, 0));
-            if(playerPosition.x >= (window.getSize().x - 10.f)) {
+            if (playerPosition.x >= (window.getSize().x - 10.f)) {
                 player.setPosition((window.getSize().x - 10.f), (window.getSize().y - 10.f));
             }
         }
@@ -114,13 +114,12 @@ int main() {
         // Display
         window.clear(sf::Color::Black);
         window.draw(player);
-        for(size_t i = 0; i < enemyTile.size(); i++) {
+        for (size_t i = 0; i < enemyTile.size(); i++) {
             window.draw(enemyTile[i].enemy);
         }
-        for(size_t i = 0; i < magazine.size(); i++) {
+        for (size_t i = 0; i < magazine.size(); i++) {
             window.draw(magazine[i].bulletShape);
         }
         window.display();
     }
-    return 0;
 }

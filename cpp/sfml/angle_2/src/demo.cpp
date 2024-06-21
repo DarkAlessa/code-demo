@@ -81,6 +81,7 @@ int main() {
 ////--- Time
     sf::Clock clock;
     sf::Time elapsed;
+    
 ////--- Loop --------------------------------------------------------
     sf::Event event;
     while (window.isOpen()) {

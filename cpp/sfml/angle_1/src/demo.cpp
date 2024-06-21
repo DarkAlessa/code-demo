@@ -119,6 +119,7 @@ int main() {
         v_line.setEnd(sf::Vector2f(compass.getPosition().x, win_y));
         h_line.setStart(sf::Vector2f(0.0f, compass.getPosition().y));
         h_line.setEnd(sf::Vector2f(win_x, compass.getPosition().y));
+        
     ////-----------------------------------------------------------
         window.clear(sf::Color(48, 56, 65));
         if (show_line == true) {
