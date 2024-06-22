@@ -31,8 +31,8 @@ auto Graph::update() -> void {
 
     // Graph A
     for (float i = 0.0f; i < 600.0f; i++) {
-        g_a[2 * i].position = sf::Vector2f(i, 180 + (80 * sin(i/24)));
-        g_a[2 * i].color = sf::Color{128, 255, 0, 210};
+        g_a[2 * i].position = sf::Vector2f(i, 180.f + (80.f * sin(i / 24.f)));
+        g_a[2 * i].color = sf::Color{128, 255, 0, 255};
 
         g_a[2 * i + 1].position = sf::Vector2f(i, 180.f);
         g_a[2 * i + 1].color = sf::Color{32, 32, 32, 0};
@@ -40,8 +40,8 @@ auto Graph::update() -> void {
 
     // Graph B
     for (float i = 0.0f; i < 600.0f; i++) {
-        g_b[2 * i].position = sf::Vector2f(i, 180 + (120 * sin(i/24)));
-        g_b[2 * i].color = sf::Color{120, 100, 20, 210};
+        g_b[2 * i].position = sf::Vector2f(i, 180.f + (120.f * sin(i / 24.f)));
+        g_b[2 * i].color = sf::Color{120, 100, 20, 255};
 
         g_b[2 * i + 1].position = sf::Vector2f(i, 180.f);
         g_b[2 * i + 1].color = sf::Color{32, 32, 32, 0};
