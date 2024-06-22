@@ -20,8 +20,8 @@ private:
     unsigned width;
     unsigned height;
     sf::RenderWindow window;
-    sf::VertexArray g_a;
-    sf::VertexArray g_b;
+    sf::VertexArray area_a;
+    sf::VertexArray area_b;
     sf::VertexArray sine_wave_a;
     sf::VertexArray sine_wave_b;
     sf::Vertex line[2];
