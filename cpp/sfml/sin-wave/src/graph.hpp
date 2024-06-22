@@ -24,6 +24,9 @@ private:
     sf::VertexArray g_a;
     sf::VertexArray g_b;
     sf::Vertex line[2];
+
+    sf::VertexArray sine_wave_a;
+    sf::VertexArray sine_wave_b;
 };
 
 #endif // GRAPH_HPP
