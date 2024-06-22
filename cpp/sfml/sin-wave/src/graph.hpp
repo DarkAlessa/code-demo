@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System/String.hpp>
+#include <SFML/System/Time.hpp>
+#include <SFML/System/Clock.hpp>
 
 class Graph {
 public:
@@ -25,6 +27,12 @@ private:
     sf::VertexArray sine_wave_a;
     sf::VertexArray sine_wave_b;
     sf::Vertex line[2];
+
+    float phase = 0.f;
+    float amplitude = 0.f;
+
+    sf::Clock clock;
+    sf::Time elapsed;
 };
 
 #endif // GRAPH_HPP

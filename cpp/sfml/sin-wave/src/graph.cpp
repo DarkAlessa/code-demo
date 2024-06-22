@@ -13,6 +13,9 @@ Graph::Graph(unsigned width, unsigned height, const sf::String& title)
     sine_wave_a.resize(600);
     sine_wave_b.setPrimitiveType(sf::PrimitiveType::LineStrip);
     sine_wave_b.resize(600);
+
+    sf::Clock clock;
+    sf::Time elapsed;
 }
 
 Graph::~Graph() = default;
@@ -36,30 +39,50 @@ auto Graph::update() -> void {
     // Graph A
     for (float x = 0.0f; x < 600.0f; x++) {
         // Graph a
-        area_a[2 * x].position = sf::Vector2f(x, 180.f + (80.f * sin(x * 0.04f + 0.0f)));
+        area_a[2 * x].position = sf::Vector2f(x, 180.f + (60.f * sin(x * 0.04f + phase)));
         area_a[2 * x].color = sf::Color{128, 255, 0, 255};
         area_a[2 * x + 1].position = sf::Vector2f(x, 180.f);
         area_a[2 * x + 1].color = sf::Color{32, 32, 32, 0};
 
-        sine_wave_a[x].position = sf::Vector2f(x, 180.f + (80.f * sin(x * 0.04f + 0.0f))); 
+        sine_wave_a[x].position = sf::Vector2f(x, 180.f + (60.f * sin(x * 0.04f + phase))); 
         sine_wave_a[x].color = sf::Color::White;
 
         // Graph b
-        area_b[2 * x].position = sf::Vector2f(x, 180.f + (120.f * sin(x * 0.04f + 0.0f)));
+        area_b[2 * x].position = sf::Vector2f(x, 180.f + (amplitude * sin(x * 0.04f + 0.0f)));
         area_b[2 * x].color = sf::Color{120, 100, 20, 255};
         area_b[2 * x + 1].position = sf::Vector2f(x, 180.f);
         area_b[2 * x + 1].color = sf::Color{32, 32, 32, 0};
 
-        sine_wave_b[x].position = sf::Vector2f(x, 180.f + (120.f * sin(x * 0.04f + 0.0f))); 
+        sine_wave_b[x].position = sf::Vector2f(x, 180.f + (amplitude * sin(x * 0.04f + 0.0f))); 
         sine_wave_b[x].color = sf::Color::White;
+    }
+
+    static bool toggle = true;
+    elapsed = clock.getElapsedTime();
+    if (elapsed.asMilliseconds() > 90) {
+        phase += 1.0f;
+        if (phase >= 360.f)
+            phase = 0.f;
+
+        if (toggle == true) {
+            amplitude += 8.f;
+            if (amplitude >= 120.f)
+                toggle = false;
+        } else {
+            amplitude -= 8.f;
+            if (amplitude <= -120)
+                toggle = true;
+        }
+
+        clock.restart();
     }
 }
 
 auto Graph::display() -> void {
     window.clear(sf::Color(32, 32, 32, 255));
     window.draw(area_a);
-    window.draw(area_b);
     window.draw(sine_wave_a);
+    window.draw(area_b);
     window.draw(sine_wave_b);
     window.draw(line, 2, sf::Lines);
     window.display();
