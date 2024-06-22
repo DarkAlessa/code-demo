@@ -28,9 +28,6 @@ private:
     sf::VertexArray sine_wave_b;
     sf::Vertex line[2];
 
-    float phase = 0.f;
-    float amplitude = 0.f;
-
     sf::Clock clock;
     sf::Time elapsed;
 };

@@ -36,9 +36,11 @@ auto Graph::update() -> void {
     line[0].color = sf::Color{80, 80, 80, 255};
     line[1].color = sf::Color{80, 80, 80, 255};
 
+    static float phase = 0.f;
+    static float amplitude = 0.f;
+
     // Graph A
     for (float x = 0.0f; x < 600.0f; x++) {
-
         float y_a = 180.f + (60.f * sin(x * 0.04f + phase));
         float y_b = 180.f + (amplitude * sin(x * 0.04f + 0.0f));
 
@@ -63,7 +65,7 @@ auto Graph::update() -> void {
 
     static bool toggle = true;
     elapsed = clock.getElapsedTime();
-    if (elapsed.asMilliseconds() > 90) {
+    if (elapsed.asMilliseconds() > 60) {
         phase += 1.0f;
         if (phase >= 360.f)
             phase = 0.f;
