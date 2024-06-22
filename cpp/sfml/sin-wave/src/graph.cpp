@@ -38,22 +38,26 @@ auto Graph::update() -> void {
 
     // Graph A
     for (float x = 0.0f; x < 600.0f; x++) {
+
+        float y_a = 180.f + (60.f * sin(x * 0.04f + phase));
+        float y_b = 180.f + (amplitude * sin(x * 0.04f + 0.0f));
+
         // Graph a
-        area_a[2 * x].position = sf::Vector2f(x, 180.f + (60.f * sin(x * 0.04f + phase)));
+        area_a[2 * x].position = sf::Vector2f(x, y_a);
         area_a[2 * x].color = sf::Color{128, 255, 0, 255};
         area_a[2 * x + 1].position = sf::Vector2f(x, 180.f);
         area_a[2 * x + 1].color = sf::Color{32, 32, 32, 0};
 
-        sine_wave_a[x].position = sf::Vector2f(x, 180.f + (60.f * sin(x * 0.04f + phase))); 
+        sine_wave_a[x].position = sf::Vector2f(x, y_a);
         sine_wave_a[x].color = sf::Color::White;
 
         // Graph b
-        area_b[2 * x].position = sf::Vector2f(x, 180.f + (amplitude * sin(x * 0.04f + 0.0f)));
+        area_b[2 * x].position = sf::Vector2f(x, y_b);
         area_b[2 * x].color = sf::Color{120, 100, 20, 255};
         area_b[2 * x + 1].position = sf::Vector2f(x, 180.f);
         area_b[2 * x + 1].color = sf::Color{32, 32, 32, 0};
 
-        sine_wave_b[x].position = sf::Vector2f(x, 180.f + (amplitude * sin(x * 0.04f + 0.0f))); 
+        sine_wave_b[x].position = sf::Vector2f(x, y_b); 
         sine_wave_b[x].color = sf::Color::White;
     }
 
@@ -79,7 +83,7 @@ auto Graph::update() -> void {
 }
 
 auto Graph::display() -> void {
-    window.clear(sf::Color(32, 32, 32, 255));
+    window.clear(sf::Color(40, 40, 40, 255));
     window.draw(area_a);
     window.draw(sine_wave_a);
     window.draw(area_b);
