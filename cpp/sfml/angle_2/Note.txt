@@ -2,7 +2,6 @@ x = r * cos(A);	// A is radian
 y = r * sin(A); // B is radian
 
 
-//-----
 	   (x,y)
 	  /|
 	r/ |
