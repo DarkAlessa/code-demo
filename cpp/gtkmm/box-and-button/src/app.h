@@ -9,25 +9,25 @@
 
 class My_window : public Gtk::Window {
 public:
-  My_window();
-  virtual ~My_window();
+    My_window();
+    virtual ~My_window();
 
 protected:
-  void click(const Glib::ustring& ss);
+    void click(const Glib::ustring& ss);
 
-  // signal
-  sigc::slot<void(const Glib::ustring&)> signal;
+    // signal
+    sigc::slot<void(const Glib::ustring&)> signal;
 
-  Gtk::Box top_box;
-  Gtk::Box group_box_1;
-  Gtk::Box group_box_2;
+    Gtk::Box top_box;
+    Gtk::Box group_box_1;
+    Gtk::Box group_box_2;
 
-  Gtk::Button button_1;
-  Gtk::Button button_2;
-  Gtk::Button button_3;
-  Gtk::Button button_4;
+    Gtk::Button button_1;
+    Gtk::Button button_2;
+    Gtk::Button button_3;
+    Gtk::Button button_4;
 
-  Gtk::Separator separator;
+    Gtk::Separator separator;
 };
 
 #endif // APP_H

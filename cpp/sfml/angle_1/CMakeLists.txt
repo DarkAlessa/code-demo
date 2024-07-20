@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26 FATAL_ERROR)
-project(demo VERSION 1.0.0 LANGUAGES C CXX)
+project(demo VERSION 1.0.0 LANGUAGES CXX)
 
 # compiler flags/options INTERFACE
 add_library(compiler_flags INTERFACE)

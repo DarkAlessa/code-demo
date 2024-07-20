@@ -13,13 +13,13 @@ src = [
 ]
 
 imgui_src = [
-    'src/imgui/imgui.cpp',
-    'src/imgui/imgui_demo.cpp',
-    'src/imgui/imgui_draw.cpp',
-    'src/imgui/imgui_tables.cpp',
-    'src/imgui/imgui_widgets.cpp',
-    'src/imgui/imgui_impl_sdl2.cpp',
-    'src/imgui/imgui_impl_sdlrenderer2.cpp',
+  'src/imgui/imgui.cpp',
+  'src/imgui/imgui_demo.cpp',
+  'src/imgui/imgui_draw.cpp',
+  'src/imgui/imgui_tables.cpp',
+  'src/imgui/imgui_widgets.cpp',
+  'src/imgui/imgui_impl_sdl2.cpp',
+  'src/imgui/imgui_impl_sdlrenderer2.cpp',
 ]
 
 cpp_compiler = meson.get_compiler('cpp')

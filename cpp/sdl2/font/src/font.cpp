@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
 
 //// FPS
     FrameRate fps(60);
-    
+
 //// Loop
     bool isRunning = true;
     while (isRunning) {

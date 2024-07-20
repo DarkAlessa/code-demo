@@ -20,6 +20,9 @@
 /subprojects/*
 !/subprojects/*.wrap
 
+#/// Markdown
+!*build*.md
+
 #/// C
 # Prerequisites
 *.d

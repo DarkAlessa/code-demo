@@ -10,8 +10,8 @@ endif
 incdir = include_directories('src')
 
 src = [
-    'src/main.cpp',
-    'src/quarter-circle.cpp',
+  'src/main.cpp',
+  'src/quarter-circle.cpp',
 ]
 
 cpp_compiler = meson.get_compiler('cpp')

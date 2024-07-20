@@ -14,8 +14,8 @@ int main() {
     window.setSize(sf::Vector2u(640, 480));
     window.setFramerateLimit(60);
 
-    [[maybe_unused]] auto win_x = window.getSize().x;
-    [[maybe_unused]] auto win_y = window.getSize().y;
+    auto win_x = window.getSize().x;
+    auto win_y = window.getSize().y;
 
     sf::Font font;
     assert(font.loadFromFile("./assets/font/Consola.TTF"));

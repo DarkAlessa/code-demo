@@ -1,18 +1,22 @@
 #include "line.h"
 
 Line::Line(float x0, float y0, float x1, float y1)
-: start(x0, y0), end(x1, y1)
+: start(x0, y0)
+, end(x1, y1)
 {
     line[0] = {sf::Vertex(start)};
     line[1] = {sf::Vertex(end)};
 }
 
 Line::Line(sf::Vector2f x, sf::Vector2f y)
-: start(x), end(y) 
+: start(x)
+, end(y) 
 {
     line[0] = {sf::Vertex(start)};
     line[1] = {sf::Vertex(end)};
 }
+
+Line::~Line() = default;
 
 Line& Line::setStart(float x0, float y0) {
     this->line[0].position.x = x0;
@@ -48,24 +52,22 @@ Line& Line::setColor(sf::Color colorA, sf::Color colorB) {
     return *this;
 }
 
-sf::Vertex* Line::getLine() {
-    return line;
-}
-
-float Line::getStartX() {
+float Line::getStartX() const {
     return line[0].position.x;
 }
 
-float Line::getStartY() {
+float Line::getStartY() const {
     return line[0].position.y;
 }
 
-float Line::getEndX() {
+float Line::getEndX() const {
     return line[1].position.x;
 }
 
-float Line::getEndY() {
+float Line::getEndY() const {
     return line[1].position.y;
 }
 
-Line::~Line() = default;
+const sf::Vertex* Line::getLine() const {
+    return line;
+}

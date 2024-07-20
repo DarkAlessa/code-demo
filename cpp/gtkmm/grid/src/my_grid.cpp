@@ -1,11 +1,11 @@
 #include "my_grid.h"
 
-My_Grid::My_Grid()
-: bt_a("Button(0, 0)")
-, bt_b("Button(1, 0)")
-, bt_c("Button(0 - 1, 1)")
-, bt_d("Button(1, 2)")
-, bt_e("Button(0, 2)")
+My_Grid::My_Grid() :
+    bt_a("Button(0, 0)"),
+    bt_b("Button(1, 0)"),
+    bt_c("Button(0 - 1, 1)"),
+    bt_d("Button(1, 2)"),
+    bt_e("Button(0, 2)")
 {
     set_margin(10);
     set_row_spacing(4);
